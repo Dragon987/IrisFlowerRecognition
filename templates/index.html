@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iris recognition</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+</head>
+
+<body>
+    <h1>Classifying Iris Flowers</h1><br />
+    <h2>Sepal Length</h2>
+    <input id="sep_len" /> <br />
+    <h2>Sepal Width</h2>
+    <input id="sep_wid" /> <br />
+    <h2>Petal Length</h2>
+    <input id="pet_len" /><br />
+    <h2>Petal width</h2>
+    <input id="pet_wid" />
+    <button id="in_button" >Submit</button> <br />
+    <p id="res"></p>
+    <script>
+        $("#in_button").click(function (event) {
+            let msg = {
+                sep_len: $("#sep_len").val(),
+                sep_wid: $("#sep_wid").val(),
+                pet_len: $("#pet_len").val(),
+                pet_wid: $("#pet_wid").val()
+            }
+            console.log(msg);
+            $.post('/predict', JSON.stringify(msg), function (response) {
+                $("#res").text(response.spicies);
+                console.log(response)
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+This is a web project for recognising iris flowers from dimensions user has entered on website. All computation is handled by the server.
